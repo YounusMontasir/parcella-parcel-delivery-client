@@ -1,9 +1,12 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import useAuth from "@/hooks/useAuth";
 import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const {loginUser} = useAuth()
     const {
         register,
         handleSubmit,
@@ -13,6 +16,19 @@ const Login = () => {
     
       const onSubmit = (data) =>{
         console.log(data)
+
+        loginUser(data.email, data.password)
+        .then(res=>{
+          console.log(res.user);
+          Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Your are successfully logged in",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+          
+        })
 
     }
          

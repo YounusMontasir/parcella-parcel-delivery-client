@@ -1,7 +1,22 @@
+import useAuth from '@/hooks/useAuth';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
+  const {user, logoutUser} = useAuth()
+  const handleLogout = () =>{
+    logoutUser()
+    .then(res=>{
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your are successfully logged out",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+  }
     return (
         <div>
             <div className="navbar bg-base-100 w-10/12 mx-auto">
@@ -49,9 +64,11 @@ const Navbar = () => {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li>Profile</li>
-        <li><a>Settings</a></li>
-        <Link to='/auth/login'><li>Login</li></Link>
+        <li>{user?.displayName ? user.displayName : "Profile"}</li>
+        <li>Settings</li>
+        {
+          user ? <li onClick={handleLogout}>Logout</li> : <Link to='/auth/login'><li>Login</li></Link>
+        }
       </ul>
     </div>
   </div>

@@ -9,8 +9,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import useAuth from "@/hooks/useAuth";
 
 const Register = () => {
+  const {createUser, updateUserProfile} = useAuth()
   const {
     register,
     handleSubmit,
@@ -20,6 +22,19 @@ const Register = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    createUser(data.email, data.password)
+    .then((result) => {
+      const loggedUser = result.user;
+      // updateUserProfile(data.name, data.photo).then(() => {
+      //   const userInfo = {
+      //     name: data.name,
+      //     email: data.email,
+      //   };
+       console.log(loggedUser);
+       
+      });
+
+
   };
 
   return (
