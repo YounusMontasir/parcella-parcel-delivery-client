@@ -1,5 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import SocialLogin from "@/componentsOfWeb/SocialLogin";
 import useAuth from "@/hooks/useAuth";
 import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom";
@@ -69,6 +71,8 @@ const Login = () => {
       <Input className="bg-blue-600 text-white" type="submit" />
     </form>
     <p>Doesn't have an Account? <Link to='/auth/register' className='text-blue-700 underline'>Signup</Link></p>
+    <Separator></Separator>
+    <SocialLogin></SocialLogin>
             </div>
         </div>
     );

@@ -10,9 +10,18 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import useAuth from "@/hooks/useAuth";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
+import { Separator } from "@radix-ui/react-select";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import SocialLogin from "@/componentsOfWeb/SocialLogin";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const Register = () => {
   const {createUser, updateUserProfile} = useAuth()
+  const axiosPublic = useAxiosPublic()
   const {
     register,
     handleSubmit,
@@ -20,7 +29,7 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit =async (data) => {
     console.log(data);
     createUser(data.email, data.password)
     .then((result) => {
@@ -33,9 +42,33 @@ const Register = () => {
        console.log(loggedUser);
        
       });
-
+      // send to imgbb imagebb
+      const imageFile = {image: data.image[0]}
+      const res  = await axiosPublic.post(image_hosting_api, imageFile, {
+          headers: {
+              'Content-type': 'multipart/form-data'
+          }
+      })
+      // console.log(res.data);
+      if(res.data.success){
+        const userInfo = {
+          name: data.name,
+          phone: data.phone,
+          email: data.email,
+          date: data.date,
+          role: data.role,
+          image: res.data.data.display_url
+        }
+        const usersResponse = axiosPublic.post('/users', userInfo)
+      }
+      
+      
 
   };
+  
+  const handleGoogle = () =>{
+
+  }
 
   return (
     <div className="flex w-10/12 mx-auto">
@@ -146,7 +179,7 @@ const Register = () => {
             <Input
               id="file"
               type="file"
-              {...register("file", { required: true })}
+              {...register("image", { required: true })}
             />
             {errors.file && (
               <span className="text-red-500">File upload is required</span>
@@ -159,6 +192,9 @@ const Register = () => {
             type="submit"
           />
         </form>
+        <p>Already have an Account? <Link to='/auth/login' className='text-blue-700 underline'>Signin</Link></p>
+        <Separator orientation = "horizontal" className="my-10 bg-gray-400"></Separator>
+        <SocialLogin></SocialLogin>
       </div>
     </div>
   );
