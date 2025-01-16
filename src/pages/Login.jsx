@@ -4,11 +4,13 @@ import { Separator } from "@/components/ui/separator";
 import SocialLogin from "@/componentsOfWeb/SocialLogin";
 import useAuth from "@/hooks/useAuth";
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const {loginUser} = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
     const {
         register,
         handleSubmit,
@@ -21,6 +23,7 @@ const Login = () => {
 
         loginUser(data.email, data.password)
         .then(res=>{
+          navigate(location?.state ? location.state : "/");
           console.log(res.user);
           Swal.fire({
                   position: "center",
@@ -31,6 +34,7 @@ const Login = () => {
                 });
           
         })
+        
 
     }
          

@@ -2,13 +2,14 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import useAuth from '@/hooks/useAuth';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 
 const SocialLogin = () => {
     const { loginWithGoogle } = useAuth();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
+    const location = useLocation()
 
     const formatDate = (date) => {
         const year = date.getFullYear();
@@ -23,17 +24,21 @@ const SocialLogin = () => {
                 console.log(res.data);
                 
                 const date = new Date();
+                const parcelDelivered = 0;
+                const parcelBooked = 0;
                 const userInfo = {
                     email: res.user?.email,
                     name: res.user?.displayName,
                     role: 'user',
                     date: formatDate(date),
-                    image: res.user?.photoURL // Use the formatted date here
+                    image: res.user?.photoURL,  // Use the formatted date here
+                    parcelDelivered,
+                    parcelBooked,
                 };
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
                         console.log(res.data);
-                        navigate('/');
+                        navigate(location?.state ? location.state : "/");
                     })
                     .catch(err => {
                         console.error('Error saving user info:', err);

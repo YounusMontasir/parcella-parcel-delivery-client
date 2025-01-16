@@ -51,13 +51,17 @@ const Register = () => {
       })
       // console.log(res.data);
       if(res.data.success){
+        const parcelDelivered = 0;
+        const parcelBooked = 0;
         const userInfo = {
           name: data.name,
           phone: data.phone,
           email: data.email,
           date: data.date,
           role: data.role,
-          image: res.data.data.display_url
+          image: res.data.data.display_url,
+          parcelDelivered,
+          parcelBooked
         }
         const usersResponse = axiosPublic.post('/users', userInfo)
       }
@@ -66,9 +70,7 @@ const Register = () => {
 
   };
   
-  const handleGoogle = () =>{
-
-  }
+  
 
   return (
     <div className="flex w-10/12 mx-auto">
