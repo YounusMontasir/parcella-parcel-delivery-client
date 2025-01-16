@@ -65,7 +65,7 @@ const Navbar = () => {
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
         <li>{user?.displayName ? user.displayName : "Profile"}</li>
-        <li>Settings</li>
+        <Link to='/dashboard'><li>Dashboard</li></Link>
         {
           user ? <li onClick={handleLogout}>Logout</li> : <Link to='/auth/login'><li>Login</li></Link>
         }
