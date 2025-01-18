@@ -1,7 +1,7 @@
 import useAuth from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -10,23 +10,37 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { FaTruck, FaUsers } from "react-icons/fa";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Label } from "@/components/ui/label";
 
 const MyParcel = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  
+  // Create state for selected filter
+  const [statusFilter, setStatusFilter] = useState("all");
+
   const { data: myParcels = [], refetch } = useQuery({
-    queryKey: [user?.email, "parcels"],
+    queryKey: [user?.email, "parcels", statusFilter],
     queryFn: async () => {
       const res = await axiosSecure.get(`/parcels/${user.email}`);
-      console.log(res.data);
-
-      return res.data;
+      // If 'all' is selected, no filter applied, else filter based on booking status
+      if (statusFilter === "all") {
+        return res.data;
+      }
+      return res.data.filter(parcel => parcel.bookingStatus === statusFilter);
     },
   });
-  //   cancel Booking
+
+  // Cancel Booking function
   const handleCancel = async (parcel) => {
     Swal.fire({
       title: "Are you sure?",
@@ -50,9 +64,27 @@ const MyParcel = () => {
       }
     });
   };
+
   return (
     <div className="w-10/12 mx-auto">
-      <h1 className="text-4xl text-center mb-12 mt-12">All Users</h1>
+      <h1 className="text-4xl text-center mb-12 mt-12">My Parcels</h1>
+      {/* Filter booking status */}
+      <div className="mb-4">
+        <Label htmlFor="statusFilter">Booking Status</Label>
+        <Select value={statusFilter} onValueChange={setStatusFilter}>
+          <SelectTrigger>
+            <SelectValue placeholder="Filter by Booking Status" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All</SelectItem>
+            <SelectItem value="pending">Pending</SelectItem>
+            <SelectItem value="cancelled">Cancelled</SelectItem>
+            <SelectItem value="ontheway">On the Way</SelectItem>
+            <SelectItem value="delivered">Delivered</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
       <div>
         <Table>
           <TableHeader>
@@ -70,9 +102,7 @@ const MyParcel = () => {
           <TableBody>
             {myParcels.map((parcel) => (
               <TableRow key={parcel._id}>
-                <TableCell className="font-medium">
-                  {parcel.parcelType}
-                </TableCell>
+                <TableCell className="font-medium">{parcel.parcelType}</TableCell>
                 <TableCell>{parcel.deliveryDate}</TableCell>
                 <TableCell>{parcel.approximateDeliveryDate}</TableCell>
                 <TableCell>{parcel.bookingDate}</TableCell>
@@ -80,9 +110,7 @@ const MyParcel = () => {
                 <TableCell>{parcel.bookingStatus}</TableCell>
                 <TableCell>
                   <Link to={`/dashboard/updatebooking/${parcel._id}`}>
-                    {" "}
                     <button
-                   
                       disabled={parcel.bookingStatus !== "pending"}
                       className={`px-2 py-2 rounded text-white ${
                         parcel.bookingStatus === "pending"
