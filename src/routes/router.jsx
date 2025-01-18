@@ -13,6 +13,7 @@ import PrivateRoute from "./PrivateRoute";
 import BookParcel from "@/Dashboard/DashboardPages/BookParcel";
 import MyParcel from "@/Dashboard/DashboardPages/MyParcel";
 import MyProfile from "@/Dashboard/DashboardPages/MyProfile";
+import UpdateBookingParcel from "@/Dashboard/DashboardPages/UpdateBookingParcel";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
         {
           path: '/dashboard/myprofile',
           element: <MyProfile></MyProfile>
+        },
+        {
+          path: '/dashboard/updatebooking/:id',
+          element: <UpdateBookingParcel></UpdateBookingParcel>,
+          loader: ({params})=> fetch(`http://localhost:5000/parcels/update/${params.id}`)
         }
       ]
     }

@@ -63,23 +63,12 @@ const Dashboard = () => {
     <SidebarProvider >
        <Sidebar className="w-64">
       <SidebarHeader>
-       Welcome to Younus Montasir
+       Welcome, {user.displayName}
       </SidebarHeader>
-      <Separator orientation="horizontal" className=" h-1" />
+      <Separator orientation="horizontal" className=" h-[1px] mt-6 w-10/12 mx-auto" />
       <SidebarContent>
        
-        {/* for deliveryman */}
-        {/* My Delivery List, and My Reviews */}
-       {/* {userRole.role === 'admin' && 
-        <SidebarGroup>
-          
-        </SidebarGroup>
-       } */}
-        {/* {userRole.role === 'deliveryman' && 
-        <SidebarGroup className="space-y-2 mt-6">
-          
-           </SidebarGroup>
-        } */}
+    
           
           <SidebarGroup className="space-y-2 mt-6">
             
@@ -105,7 +94,7 @@ const Dashboard = () => {
            </>}
            </SidebarGroup>
   
-        <Separator orientation="horizontal" className="bg-black ml-3 mr-3 h-1 w-10/12"></Separator>
+        <Separator orientation="horizontal" className="bg-gray-400 my-6  mx-auto h-[1px] w-10/12"></Separator>
         <SidebarGroup>
         <Button className=""><NavLink to='/'>Home</NavLink></Button>
         </SidebarGroup>

@@ -1,252 +1,244 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import useAuth from "@/hooks/useAuth";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useLoaderData, useParams } from "react-router-dom";
 
-const BookParcel = () => {
-    const { user } = useAuth();
-    const axiosPublic = useAxiosPublic()
-    const {
-      register,
-      handleSubmit,
-      watch,
-      reset,
-      setValue, // Allows programmatically setting values in the form
-      formState: { errors },
-    } = useForm();
+const UpdateBookingParcel = () => {
+  const { user } = useAuth();
+  const myParcels = useLoaderData();
+  const {
+    deliveryAddress,
+    deliveryDate,
+    deliveryLatitude,
+    deliveryLongitude,
+    email,
+    name,
+    parcelType,
+    phone,
+    receiversName,
+    receiversPhone,
+    parcelWeight,
+    price,
+  } = myParcels;
 
-    const formatDate = (date) => {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
-      const day = String(date.getDate()).padStart(2, "0");
-      return `${year}-${month}-${day}`;
+  const axiosPublic = useAxiosPublic();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    setValue, // Allows programmatically setting values in the form
+    formState: { errors },
+  } = useForm();
+
+  const { id } = useParams(); // Assuming `id` is passed in the route
+
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
   };
-    const onSubmit = async (data) => {
-      console.log(data); 
 
-      const date = new Date();
-      const deliveryInfo = {
-        deliveryAddress: data.deliveryAddress,
-  deliveryDate: data.deliveryDate,
-  deliveryLatitude: data.deliveryLatitude,
-  deliveryLongitude: data.deliveryLongitude,
-  email: data.email,
-  name: data.name,
-  parcelType: data.parcelType,
-  parcelWeight: data.parcelWeight,
-  phone: data.phone,
-  price: data.price,
-  receiversName: data.receiversName,
-  receiversPhone: data.receiversPhone,
-  bookingStatus: "pending",
-  bookingDate: formatDate(date),
-      }
-      const res = await axiosPublic.post('/parcels', deliveryInfo)
-      console.log(res.data);
-      if(res.data.insertedId){
-        reset();
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: `Parcel is booked`,
-                showConfirmButton: false,
-                timer: 1500
-              });
-      }
-      
-      
+  const onSubmit = async (data) => {
+    const date = new Date();
+    const deliveryInfo = {
+      deliveryAddress: data.deliveryAddress,
+      deliveryDate: data.deliveryDate,
+      deliveryLatitude: data.deliveryLatitude,
+      deliveryLongitude: data.deliveryLongitude,
+      email: data.email,
+      name: data.name,
+      parcelType: data.parcelType,
+      parcelWeight: data.parcelWeight,
+      phone: data.phone,
+      price: data.price,
+      receiversName: data.receiversName,
+      receiversPhone: data.receiversPhone,
+      bookingStatus: "pending",
+      bookingDate: formatDate(date),
     };
-  
-    const parcelWeight = watch("parcelWeight");
-  
-    // Calculate the price based on parcel weight
-    const calculatePrice = () => {
-      if (!parcelWeight) return "";
-      const weight = parseFloat(parcelWeight);
-      if (weight <= 1) return 50;
-      if (weight <= 2) return 100;
-      return 150;
-    };
-  
-    const price = calculatePrice();
-  
-    // Update the `price` in the form data whenever it changes
-    React.useEffect(() => {
-      setValue("price", price);
-    }, [price, setValue]);
+
+    try {
+      const res = await axiosPublic.patch(`/parcels/update/${id}`, deliveryInfo);
+      if (res.data.modifiedCount) {
+        reset()
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Parcel is Updated",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Failed to update the parcel",
+        text: error.message,
+        showConfirmButton: true,
+      });
+    }
+  };
+
+  const watchedParcelWeight = watch("parcelWeight");
+
+  // Calculate the price based on parcel weight
+  const calculatePrice = () => {
+    if (!watchedParcelWeight) return "";
+    const weight = parseFloat(watchedParcelWeight);
+    if (weight <= 1) return 50;
+    if (weight <= 2) return 100;
+    return 150;
+  };
+
+  const calculatedPrice = calculatePrice();
+
+  // Update the `price` in the form data whenever it changes
+  useEffect(() => {
+    setValue("price", calculatedPrice);
+  }, [calculatedPrice, setValue]);
 
   return (
     <div className="w-10/12 mx-auto mt-12">
-      <h1 className="text-4xl text-center mb-10">Book A Parcel</h1>
+      <h1 className="text-4xl text-center mb-10">Update Parcel Booking</h1>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-2 gap-6">
             {/* Name Input */}
             <div className="mb-4">
               <Label htmlFor="name">Name</Label>
-              <Input defaultValue={user?.displayName}
+              <Input
+                defaultValue={name || user?.displayName}
                 id="name"
                 type="text"
                 {...register("name", { required: true })}
                 placeholder="Enter your name"
               />
-              {errors.name && (
-                <span className="text-red-500">Name is required</span>
-              )}
             </div>
 
             {/* Email Input */}
             <div className="mb-4">
               <Label htmlFor="email">Email</Label>
-              <Input defaultValue={user?.email}
+              <Input
+                defaultValue={email || user?.email}
                 id="email"
                 type="email"
                 {...register("email", { required: true })}
                 placeholder="Enter your email"
               />
-              {errors.email && (
-                <span className="text-red-500">Email is required</span>
-              )}
             </div>
 
             {/* Phone Input */}
             <div className="mb-4">
               <Label htmlFor="phone">Phone Number</Label>
               <Input
+                defaultValue={phone}
                 id="phone"
                 type="text"
                 {...register("phone", { required: true })}
                 placeholder="Enter your phone number"
               />
-              {errors.phone && (
-                <span className="text-red-500">Phone number is required</span>
-              )}
             </div>
 
             {/* Parcel Type */}
             <div className="mb-4">
               <Label htmlFor="parcelType">Parcel Type</Label>
               <Input
+                defaultValue={parcelType}
                 id="parcelType"
                 type="text"
                 {...register("parcelType", { required: true })}
                 placeholder="Enter your parcel type"
               />
-              {errors.parcelType && (
-                <span className="text-red-500">Parcel type is required</span>
-              )}
             </div>
 
             {/* Parcel Weight */}
             <div className="mb-4">
               <Label htmlFor="parcelWeight">Parcel Weight</Label>
               <Input
+                defaultValue={parcelWeight}
                 id="parcelWeight"
                 type="number"
                 {...register("parcelWeight", { required: true })}
                 placeholder="Enter the parcel weight"
               />
-              {errors.parcelWeight && (
-                <span className="text-red-500">Parcel weight is required</span>
-              )}
             </div>
 
             {/* Receiver's Name Input */}
             <div className="mb-4">
               <Label htmlFor="receiversName">Receiver's Name</Label>
               <Input
+                defaultValue={receiversName}
                 id="receiversName"
                 type="text"
                 {...register("receiversName", { required: true })}
                 placeholder="Enter receiver's name"
               />
-              {errors.receiversName && (
-                <span className="text-red-500">Receiver's name is required</span>
-              )}
             </div>
 
             {/* Receiver's Phone Input */}
             <div className="mb-4">
               <Label htmlFor="receiversPhone">Receiver's Phone Number</Label>
               <Input
+                defaultValue={receiversPhone}
                 id="receiversPhone"
                 type="text"
                 {...register("receiversPhone", { required: true })}
                 placeholder="Enter receiver's phone number"
               />
-              {errors.receiversPhone && (
-                <span className="text-red-500">
-                  Receiver's phone number is required
-                </span>
-              )}
             </div>
 
             {/* Parcel Delivery Address */}
             <div className="mb-4">
               <Label htmlFor="deliveryAddress">Parcel Delivery Address</Label>
               <Input
+                defaultValue={deliveryAddress}
                 id="deliveryAddress"
                 type="text"
                 {...register("deliveryAddress", { required: true })}
                 placeholder="Enter the delivery address"
               />
-              {errors.deliveryAddress && (
-                <span className="text-red-500">
-                  Parcel delivery address is required
-                </span>
-              )}
             </div>
 
             {/* Requested Delivery Date Input */}
             <div className="mb-4">
               <Label htmlFor="deliveryDate">Requested Delivery Date</Label>
               <Input
+                defaultValue={deliveryDate}
                 id="deliveryDate"
                 type="date"
                 {...register("deliveryDate", { required: true })}
               />
-              {errors.deliveryDate && (
-                <span className="text-red-500">
-                  Requested delivery date is required
-                </span>
-              )}
             </div>
 
             {/* Delivery Address Latitude */}
             <div className="mb-4">
               <Label htmlFor="deliveryLatitude">Delivery Address Latitude</Label>
               <Input
+                defaultValue={deliveryLatitude}
                 id="deliveryLatitude"
                 type="text"
                 {...register("deliveryLatitude", { required: true })}
                 placeholder="Enter delivery address latitude"
               />
-              {errors.deliveryLatitude && (
-                <span className="text-red-500">
-                  Delivery address latitude is required
-                </span>
-              )}
             </div>
 
             {/* Delivery Address Longitude */}
             <div className="mb-4">
-              <Label htmlFor="deliveryLongitude">
-                Delivery Address Longitude
-              </Label>
+              <Label htmlFor="deliveryLongitude">Delivery Address Longitude</Label>
               <Input
+                defaultValue={deliveryLongitude}
                 id="deliveryLongitude"
                 type="text"
                 {...register("deliveryLongitude", { required: true })}
                 placeholder="Enter delivery address longitude"
               />
-              {errors.deliveryLongitude && (
-                <span className="text-red-500">
-                  Delivery address longitude is required
-                </span>
-              )}
             </div>
 
             {/* Price */}
@@ -256,7 +248,7 @@ const BookParcel = () => {
                 id="price"
                 type="text"
                 {...register("price")}
-                value={price ? `${price}` : ""}
+                value={calculatedPrice ? `${calculatedPrice}` : ""}
                 readOnly
                 placeholder="Calculated price will appear here"
               />
@@ -267,6 +259,7 @@ const BookParcel = () => {
           <Input
             className="bg-blue-600 text-white cursor-pointer"
             type="submit"
+            value="Update Parcel"
           />
         </form>
       </div>
@@ -274,4 +267,4 @@ const BookParcel = () => {
   );
 };
 
-export default BookParcel;
+export default UpdateBookingParcel;
