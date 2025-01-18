@@ -13,15 +13,17 @@ import useAuth from "@/hooks/useAuth";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
 import { Separator } from "@radix-ui/react-select";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "@/componentsOfWeb/SocialLogin";
+import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const Register = () => {
-  const {createUser, updateUserProfile} = useAuth()
+  const {createUser, updateUserProfile, setUser} = useAuth()
   const axiosPublic = useAxiosPublic()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -31,17 +33,6 @@ const Register = () => {
 
   const onSubmit =async (data) => {
     console.log(data);
-    createUser(data.email, data.password)
-    .then((result) => {
-      const loggedUser = result.user;
-      // updateUserProfile(data.name, data.photo).then(() => {
-      //   const userInfo = {
-      //     name: data.name,
-      //     email: data.email,
-      //   };
-       console.log(loggedUser);
-       
-      });
       // send to imgbb imagebb
       const imageFile = {image: data.image[0]}
       const res  = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -63,7 +54,24 @@ const Register = () => {
           parcelDelivered,
           parcelBooked
         }
+        createUser(data.email, data.password)
+    .then((result) => {
+      const loggedUser = result.user;
+      setUser(loggedUser)
+       console.log(loggedUser);
+       updateUserProfile(data.name, res.data.data.display_url)
+       Swal.fire({
+                         position: "center",
+                         icon: "success",
+                         title: "Your are successfully logged in",
+                         showConfirmButton: false,
+                         timer: 1500
+                       });
+      });
+        
+        
         const usersResponse = axiosPublic.post('/users', userInfo)
+        // navigate("/")
       }
       
       

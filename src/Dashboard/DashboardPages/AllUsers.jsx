@@ -7,6 +7,7 @@ import {
     TableRow,
   } from "@/components/ui/table";
   import useAxiosPublic from "@/hooks/useAxiosPublic";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
   import { useQuery } from "@tanstack/react-query";
   import React from "react";
 import { FaTruck, FaUsers } from "react-icons/fa";
@@ -14,17 +15,18 @@ import Swal from "sweetalert2";
   
   const AllUsers = () => {
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
   
     const { data: users = [], refetch } = useQuery({
       queryKey: ["users"],
       queryFn: async () => {
-        const res = await axiosPublic.get("/users");
+        const res = await axiosSecure.get("/users");
         return res.data;
       },
     });
   
     const handleMakeAdmin = user =>{
-        axiosPublic.patch(`/users/admin/${user._id}`)
+        axiosSecure.patch(`/users/admin/${user._id}`)
         .then(res=>{
           console.log(res.data);
           
@@ -41,7 +43,7 @@ import Swal from "sweetalert2";
         })
       }
       const handleMakeDeliveryMan = user =>{
-        axiosPublic.patch(`/users/deliveryman/${user._id}`)
+        axiosSecure.patch(`/users/deliveryman/${user._id}`)
         .then(res=>{
           console.log(res.data);
           

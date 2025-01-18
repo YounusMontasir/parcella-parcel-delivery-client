@@ -10,6 +10,9 @@ import Register from "@/pages/Register";
 import Dashboard from "@/Dashboard/DashboardPages/Dashboard";
 import AllUsers from "@/Dashboard/DashboardPages/AllUsers";
 import PrivateRoute from "./PrivateRoute";
+import BookParcel from "@/Dashboard/DashboardPages/BookParcel";
+import MyParcel from "@/Dashboard/DashboardPages/MyParcel";
+import MyProfile from "@/Dashboard/DashboardPages/MyProfile";
 
 const router = createBrowserRouter([
     {
@@ -42,9 +45,22 @@ const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoute>,
       children: [
+        // user route
+        {
+          path: '/dashboard/bookaparcel',
+          element: <BookParcel></BookParcel>
+        },
         {
           path: '/dashboard/allusers',
           element: <AllUsers></AllUsers>
+        },
+        {
+          path: '/dashboard/myparcels',
+          element: <MyParcel></MyParcel>
+        },
+        {
+          path: '/dashboard/myprofile',
+          element: <MyProfile></MyProfile>
         }
       ]
     }
