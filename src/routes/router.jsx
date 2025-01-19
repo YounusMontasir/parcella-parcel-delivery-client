@@ -14,6 +14,9 @@ import BookParcel from "@/Dashboard/DashboardPages/BookParcel";
 import MyParcel from "@/Dashboard/DashboardPages/MyParcel";
 import MyProfile from "@/Dashboard/DashboardPages/MyProfile";
 import UpdateBookingParcel from "@/Dashboard/DashboardPages/UpdateBookingParcel";
+import AllParcels from "@/Dashboard/DashboardPages/AllParcels";
+import AllDeliveryMan from "@/Dashboard/DashboardPages/AllDeliveryMan";
+import Statistics from "@/Dashboard/DashboardPages/Statistics";
 
 const router = createBrowserRouter([
     {
@@ -52,10 +55,6 @@ const router = createBrowserRouter([
           element: <BookParcel></BookParcel>
         },
         {
-          path: '/dashboard/allusers',
-          element: <AllUsers></AllUsers>
-        },
-        {
           path: '/dashboard/myparcels',
           element: <MyParcel></MyParcel>
         },
@@ -67,7 +66,24 @@ const router = createBrowserRouter([
           path: '/dashboard/updatebooking/:id',
           element: <UpdateBookingParcel></UpdateBookingParcel>,
           loader: ({params})=> fetch(`http://localhost:5000/parcels/update/${params.id}`)
-        }
+        },
+        // admin routes
+        {
+          path: '/dashboard/allusers',
+          element: <AllUsers></AllUsers>
+        },
+        {
+          path: '/dashboard/allparcels',
+          element: <AllParcels></AllParcels>
+        },
+        {
+          path: '/dashboard/alldeliveryman',
+          element: <AllDeliveryMan></AllDeliveryMan>
+        },
+        {
+          path: '/dashboard/statistics',
+          element: <Statistics></Statistics>
+        },
       ]
     }
   ]);

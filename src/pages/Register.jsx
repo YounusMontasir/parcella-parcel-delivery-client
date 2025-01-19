@@ -52,7 +52,8 @@ const Register = () => {
           role: data.role,
           image: res.data.data.display_url,
           parcelDelivered,
-          parcelBooked
+          parcelBooked,
+          
         }
         createUser(data.email, data.password)
     .then((result) => {

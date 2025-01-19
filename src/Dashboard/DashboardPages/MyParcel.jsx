@@ -25,14 +25,13 @@ const MyParcel = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   
-  // Create state for selected filter
+
   const [statusFilter, setStatusFilter] = useState("all");
 
   const { data: myParcels = [], refetch } = useQuery({
     queryKey: [user?.email, "parcels", statusFilter],
     queryFn: async () => {
       const res = await axiosSecure.get(`/parcels/${user.email}`);
-      // If 'all' is selected, no filter applied, else filter based on booking status
       if (statusFilter === "all") {
         return res.data;
       }
@@ -40,7 +39,6 @@ const MyParcel = () => {
     },
   });
 
-  // Cancel Booking function
   const handleCancel = async (parcel) => {
     Swal.fire({
       title: "Are you sure?",
@@ -58,6 +56,8 @@ const MyParcel = () => {
             title: "Cancelled!",
             text: "Your file has been cancelled.",
             icon: "success",
+            showConfirmButton: false,
+            timer: 1500
           });
           refetch();
         }

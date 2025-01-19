@@ -43,6 +43,7 @@ const BookParcel = () => {
   receiversPhone: data.receiversPhone,
   bookingStatus: "pending",
   bookingDate: formatDate(date),
+ 
       }
       const res = await axiosPublic.post('/parcels', deliveryInfo)
       console.log(res.data);

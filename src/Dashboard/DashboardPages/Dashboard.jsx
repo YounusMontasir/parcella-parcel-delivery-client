@@ -43,6 +43,8 @@ const Dashboard = () => {
   
   const [isAdmin] = useAdmin()
   const [isDeliveryMan] = useDeliveryMan()
+  
+  
   // const axiosSecure = useAxiosSecure()
   // const { data: userRole={}, refetch, isLoading } = useQuery({
   //   queryKey: [user?.email],
@@ -76,7 +78,7 @@ const Dashboard = () => {
             <>
             <Button className="bg-blue-600"><NavLink to='/dashboard/allusers'>All Users</NavLink></Button>
       <Button className="bg-blue-600"><NavLink to='/dashboard/allparcels'>All Parcels</NavLink></Button>
-      <Button className="bg-blue-600"><NavLink to='/dashboard/allusers'>All Delivery Man</NavLink></Button>
+      <Button className="bg-blue-600"><NavLink to='/dashboard/alldeliveryman'>All Delivery Man</NavLink></Button>
       <Button className="bg-blue-600"><NavLink to='/dashboard/statistics'>Statistics</NavLink></Button>
             </>
           }
