@@ -26,6 +26,7 @@ const SocialLogin = () => {
                 const date = new Date();
                 const parcelDelivered = 0;
                 const parcelBooked = 0;
+                const averageReview = 0
                 const userInfo = {
                     email: res.user?.email,
                     name: res.user?.displayName,
@@ -34,6 +35,7 @@ const SocialLogin = () => {
                     image: res.user?.photoURL,  // Use the formatted date here
                     parcelDelivered,
                     parcelBooked,
+                    averageReview
                 };
                 axiosPublic.post('/users', userInfo)
                     .then(res => {

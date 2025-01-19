@@ -44,6 +44,7 @@ const Register = () => {
       if(res.data.success){
         const parcelDelivered = 0;
         const parcelBooked = 0;
+        const averageReview = 0
         const userInfo = {
           name: data.name,
           phone: data.phone,
@@ -53,7 +54,8 @@ const Register = () => {
           image: res.data.data.display_url,
           parcelDelivered,
           parcelBooked,
-          
+          averageReview
+
         }
         createUser(data.email, data.password)
     .then((result) => {

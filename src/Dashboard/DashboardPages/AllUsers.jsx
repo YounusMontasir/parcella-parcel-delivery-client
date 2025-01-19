@@ -62,7 +62,7 @@ import Swal from "sweetalert2";
   
     return (
       <div className="w-10/12 mx-auto">
-        <h1 className="text-4xl text-center">All Users</h1>
+        <h1 className="text-4xl text-center mt-16 mb-12">All Users</h1>
        
         
         <div>

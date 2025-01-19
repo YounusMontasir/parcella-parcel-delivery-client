@@ -17,6 +17,7 @@ import UpdateBookingParcel from "@/Dashboard/DashboardPages/UpdateBookingParcel"
 import AllParcels from "@/Dashboard/DashboardPages/AllParcels";
 import AllDeliveryMan from "@/Dashboard/DashboardPages/AllDeliveryMan";
 import Statistics from "@/Dashboard/DashboardPages/Statistics";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -70,19 +71,27 @@ const router = createBrowserRouter([
         // admin routes
         {
           path: '/dashboard/allusers',
-          element: <AllUsers></AllUsers>
+          element: <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
         },
         {
           path: '/dashboard/allparcels',
-          element: <AllParcels></AllParcels>
+          element: <AdminRoute>
+            <AllParcels></AllParcels>
+          </AdminRoute>
         },
         {
           path: '/dashboard/alldeliveryman',
-          element: <AllDeliveryMan></AllDeliveryMan>
+          element:<AdminRoute>
+             <AllDeliveryMan></AllDeliveryMan>
+          </AdminRoute>
         },
         {
           path: '/dashboard/statistics',
-          element: <Statistics></Statistics>
+          element: <AdminRoute>
+            <Statistics></Statistics>
+          </AdminRoute>
         },
       ]
     }

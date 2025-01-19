@@ -76,6 +76,8 @@ const AllParcels = () => {
  
   return (
     <div className="w-10/12 mx-auto">
+       <h2 className='mt-16 text-4xl mb-12 text-center'>All Parcels</h2>
+      <div>
       <Table>
         <TableHeader>
           <TableRow>
@@ -102,7 +104,9 @@ const AllParcels = () => {
                 <TableCell>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button variant="outline">Edit</Button>
+                      <Button
+                      disabled={parcel.bookingStatus === "cancelled"}
+                       variant="outline">Edit</Button>
                     </DialogTrigger>
                     <DialogContent className="w-6/12">
                       <DialogHeader>
@@ -189,6 +193,7 @@ const AllParcels = () => {
           })}
         </TableBody>
       </Table>
+      </div>
     </div>
   );
 };
