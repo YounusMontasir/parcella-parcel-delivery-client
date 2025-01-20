@@ -18,6 +18,9 @@ import AllParcels from "@/Dashboard/DashboardPages/AllParcels";
 import AllDeliveryMan from "@/Dashboard/DashboardPages/AllDeliveryMan";
 import Statistics from "@/Dashboard/DashboardPages/Statistics";
 import AdminRoute from "./AdminRoute";
+import DeliveryManRoute from "./DeliveryManRoute";
+import MyDeliveryList from "@/Dashboard/DashboardPages/MyDeliveryList";
+import MyReviews from "@/Dashboard/DashboardPages/MyReviews";
 
 const router = createBrowserRouter([
     {
@@ -93,6 +96,19 @@ const router = createBrowserRouter([
             <Statistics></Statistics>
           </AdminRoute>
         },
+        // delivery route
+        {
+          path: '/dashboard/mydeliverylist',
+          element: <DeliveryManRoute>
+            <MyDeliveryList></MyDeliveryList>
+          </DeliveryManRoute>
+        },
+        {
+          path: '/dashboard/myreviews',
+          element: <DeliveryManRoute>
+            <MyReviews></MyReviews>
+          </DeliveryManRoute>
+        }
       ]
     }
   ]);
