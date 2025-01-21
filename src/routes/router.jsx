@@ -21,6 +21,7 @@ import AdminRoute from "./AdminRoute";
 import DeliveryManRoute from "./DeliveryManRoute";
 import MyDeliveryList from "@/Dashboard/DashboardPages/MyDeliveryList";
 import MyReviews from "@/Dashboard/DashboardPages/MyReviews";
+import Payment from "@/Dashboard/DashboardPages/Payment";
 
 const router = createBrowserRouter([
     {
@@ -108,6 +109,11 @@ const router = createBrowserRouter([
           element: <DeliveryManRoute>
             <MyReviews></MyReviews>
           </DeliveryManRoute>
+        },
+        {
+          path: '/dashboard/payment/:id',
+          element: <Payment></Payment>,
+          loader: ({params})=> fetch(`http://localhost:5000/parcels/payment/${params.id}`)
         }
       ]
     }

@@ -34,6 +34,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
+import { MdOutlinePayment } from "react-icons/md";
 
 
 const MyParcel = () => {
@@ -43,14 +44,22 @@ const MyParcel = () => {
   const {  register,
     handleSubmit,
     control, } = useForm()
+    const formatDate = (date) => {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+      const day = String(date.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+  };
   const onSubmit =async (data) => {
-    console.log(data)
+    // console.log(data)
+    const date = new Date();
     const reviewInfo = {
       userName: data.name,
       usersImage: data.photo,
       review: data.review,
       feedback: data.feedback,
-      deliveryManId: data.deliveryManId
+      deliveryManId: data.deliveryManId,
+      reviewDate: formatDate(date)
     }
     const res =await axiosPublic.post('/reviews', reviewInfo)
     console.log(res.data);
@@ -177,6 +186,9 @@ const MyParcel = () => {
                   >
                     Cancel
                   </button>
+                </TableCell>
+                <TableCell>
+                  <Link to={`/dashboard/payment/${parcel._id}`}><button className="bg-blue-600 text-white rounded-md px-3 py-2">Pay</button></Link>
                 </TableCell>
                 {/* give review */}
                 <TableCell>

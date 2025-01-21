@@ -125,7 +125,9 @@ const MyDeliveryList = () => {
                   <button
                     onClick={() => handleDeliver(deliveryList)}
                     disabled={deliveryList.bookingStatus === "delivered"}
-                    className={`px-2 py-2 rounded bg-orange-500`}
+                    className={`px-2 py-2 rounded bg-orange-500 ${
+                      deliveryList.bookingStatus === "cancelled" ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                   >
                     {deliveryList.bookingStatus ==="delivered" ? "Delivered" : "Deliver"}
                   </button>
@@ -134,7 +136,9 @@ const MyDeliveryList = () => {
                   <button
                     onClick={() => handleCancel(deliveryList)}
                     disabled={deliveryList.bookingStatus === "cancelled"}
-                    className={`px-2 py-2 rounded bg-orange-500`}
+                    className={`px-2 py-2 rounded bg-orange-500 ${
+                      deliveryList.bookingStatus === "delivered" ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                   >
                     {deliveryList.bookingStatus ==="cancelled" ? "Cancelled" : "Cancel"}
                   </button>
