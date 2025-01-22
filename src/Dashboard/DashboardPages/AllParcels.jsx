@@ -77,6 +77,17 @@ const AllParcels = () => {
   return (
     <div className="w-10/12 mx-auto">
        <h2 className='mt-16 text-4xl mb-12 text-center'>All Parcels</h2>
+       <div className="flex gap-6 w-9/12 mb-16">
+        
+        <div>
+        <Label htmlFor="name">Enter Requested date from</Label>
+        <Input type="date" placeholder="Enter Requested date from"></Input>
+        </div>
+        <div>
+        <Label htmlFor="name">Enter Requested date to</Label>
+        <Input type="date" placeholder="Enter Requested date to"></Input>
+        </div>
+       </div>
       <div>
       <Table>
         <TableHeader>

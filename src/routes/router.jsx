@@ -22,6 +22,7 @@ import DeliveryManRoute from "./DeliveryManRoute";
 import MyDeliveryList from "@/Dashboard/DashboardPages/MyDeliveryList";
 import MyReviews from "@/Dashboard/DashboardPages/MyReviews";
 import Payment from "@/Dashboard/DashboardPages/Payment";
+import Confetti from "@/Dashboard/DashboardPages/Confetti";
 
 const router = createBrowserRouter([
     {
@@ -114,8 +115,14 @@ const router = createBrowserRouter([
           path: '/dashboard/payment/:id',
           element: <Payment></Payment>,
           loader: ({params})=> fetch(`http://localhost:5000/parcels/payment/${params.id}`)
-        }
+        },
+        
       ]
+    },
+    {
+      path: '/confetti',
+      element: <Confetti></Confetti>,
+      
     }
   ]);
 

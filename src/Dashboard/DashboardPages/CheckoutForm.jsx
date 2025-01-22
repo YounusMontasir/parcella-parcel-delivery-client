@@ -2,6 +2,7 @@ import useAuth from '@/hooks/useAuth';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const CheckoutForm = ({ prices }) => {
@@ -12,6 +13,7 @@ const CheckoutForm = ({ prices }) => {
   const [error, setError] = useState('');
   const [transactionId, setTransactionId] = useState('');
   const [clientSecret, setClientSecret] = useState('');
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (prices.price > 0) {
@@ -65,13 +67,7 @@ const CheckoutForm = ({ prices }) => {
 
       const res = await axiosPublic.post('/payments', payment);
       if (res.data?.paymentResult?.insertedId) {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Thank you for the payment!',
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        // navigate('/dashboard/confetti')
       }
     }
   };
@@ -101,6 +97,7 @@ const CheckoutForm = ({ prices }) => {
           <div className="text-gray-600 mb-4">
             <p>Total: <span className="font-semibold text-gray-800">${prices.price}</span></p>
           </div>
+          <Link to="/confetti">
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
@@ -108,6 +105,7 @@ const CheckoutForm = ({ prices }) => {
           >
             Pay Now
           </button>
+          </Link>
           {error && <p className="text-red-600 mt-3">{error}</p>}
           {transactionId && (
             <p className="text-green-600 mt-3">
