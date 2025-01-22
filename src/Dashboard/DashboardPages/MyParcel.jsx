@@ -112,7 +112,7 @@ const MyParcel = () => {
       <div className="rounded-lg">
   <Table className="overflow-hidden overflow-x-auto rounded-lg shadow-lg border border-gray-300">
     <TableHeader className="bg-gradient-to-r from-orange-500 to-red-500 ">
-      <TableRow className='text-[#25224B]'>
+      <TableRow className=''>
         <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Parcel Type</TableHead>
         <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Requested Delivery Date</TableHead>
         <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Approximate Delivery Date</TableHead>

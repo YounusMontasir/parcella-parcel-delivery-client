@@ -85,35 +85,35 @@ const MyDeliveryList = () => {
         });
       };
     return (
-        <div className='w-10/12 mx-auto'>
+        <div className='w-11/12 lg:w-10/12 mx-auto'>
            <h1 className="text-4xl text-center mb-12 mt-12">My Delivery List</h1>
-           <div>
-           <Table>
-          <TableHeader>
+           <div className="rounded-lg">
+           <Table className="overflow-hidden overflow-x-auto rounded-lg shadow-lg border border-gray-300">
+          <TableHeader className="bg-gradient-to-r from-orange-500 to-red-500 ">
             <TableRow>
-              <TableHead className="">Booked User’s Name</TableHead>
-              <TableHead>Receivers Name</TableHead>
-              <TableHead>Booked User’s Phone</TableHead>
-              <TableHead>Requested Delivery Date</TableHead>
-              <TableHead>Approximate Delivery Date</TableHead>
-              <TableHead>Receivers phone number</TableHead>
-              <TableHead>Receivers Address</TableHead>
-              <TableHead className="">Actions</TableHead>
-              <TableHead className="">Actions</TableHead>
-              <TableHead className="">Actions</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Booked User’s Name</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Receivers Name</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Booked User’s Phone</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Requested Delivery Date</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Approximate Delivery Date</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Receivers phone number</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Receivers Address</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Actions</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Actions</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {deliveryLists.map((deliveryList) => (
               <TableRow key={deliveryList._id}>
-                <TableCell className="font-medium">{deliveryList.name}</TableCell>
-                <TableCell>{deliveryList.receiversName}</TableCell>
-                <TableCell>{deliveryList.phone}</TableCell>
-                <TableCell>{deliveryList.deliveryDate}</TableCell>
-                <TableCell>{deliveryList.approximateDeliveryDate}</TableCell>
-                <TableCell>{deliveryList.receiversPhone}</TableCell>
-                <TableCell>{deliveryList.deliveryAddress}</TableCell>
-                <TableCell>
+                <TableCell className="font-medium p-4" >{deliveryList.name}</TableCell>
+                <TableCell className="p-4  ">{deliveryList.receiversName}</TableCell>
+                <TableCell className="p-4  ">{deliveryList.phone}</TableCell>
+                <TableCell className="p-4  ">{deliveryList.deliveryDate}</TableCell>
+                <TableCell className="p-4  ">{deliveryList.approximateDeliveryDate}</TableCell>
+                <TableCell className="p-4  ">{deliveryList.receiversPhone}</TableCell>
+                <TableCell className="p-4  ">{deliveryList.deliveryAddress}</TableCell>
+                <TableCell className="p-4  ">
                   <Link >
                     <button className='px-2 py-2 rounded bg-orange-500'
                     >

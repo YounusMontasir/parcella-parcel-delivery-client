@@ -31,7 +31,7 @@ const AllParcels = () => {
   });
 
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="w-11/12 lg:w-10/12 mx-auto">
       <h2 className="mt-16 text-4xl mb-12 text-center">All Parcels</h2>
 
       {/* Date Range Filter */}
@@ -54,33 +54,31 @@ const AllParcels = () => {
             onChange={(e) => setToDate(e.target.value)}
           />
         </div>
-        <Button onClick={() => refetch()} className="self-end">
-          Search
-        </Button>
+       
       </div>
 
       {/* Parcel Table */}
-      <div>
-        <Table>
-          <TableHeader>
+      <div className="rounded-lg">
+        <Table className="overflow-hidden overflow-x-auto rounded-lg shadow-lg border border-gray-300">
+          <TableHeader className="bg-gradient-to-r from-orange-500 to-red-500 ">
             <TableRow>
-              <TableHead>Parcel Type</TableHead>
-              <TableHead>Phone</TableHead>
-              <TableHead>Booking Date</TableHead>
-              <TableHead>Requested Delivery Date</TableHead>
-              <TableHead>Cost</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Parcel Type</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Phone</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Booking Date</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Requested Delivery Date</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Cost</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {parcels.map((parcel) => (
               <TableRow key={parcel._id}>
-                <TableCell className="font-medium">{parcel.parcelType}</TableCell>
-                <TableCell>{parcel.phone}</TableCell>
-                <TableCell>{parcel.bookingDate}</TableCell>
-                <TableCell>{parcel.deliveryDate}</TableCell>
-                <TableCell>${parcel.price}</TableCell>
-                <TableCell>{parcel.bookingStatus}</TableCell>
+                <TableCell className="font-medium p-4">{parcel.parcelType}</TableCell>
+                <TableCell className="p-4  ">{parcel.phone}</TableCell>
+                <TableCell className="p-4  ">{parcel.bookingDate}</TableCell>
+                <TableCell className="p-4  ">{parcel.deliveryDate}</TableCell>
+                <TableCell className="p-4  ">${parcel.price}</TableCell>
+                <TableCell className="p-4  ">{parcel.bookingStatus}</TableCell>
               </TableRow>
             ))}
           </TableBody>

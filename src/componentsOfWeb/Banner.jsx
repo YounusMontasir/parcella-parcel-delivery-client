@@ -18,7 +18,7 @@ const Banner = () => {
                 <p className="mt-4">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci itaque, maiores aspernatur cupiditate tempore, facere vero ducimus voluptatibus consequuntur culpa magnam quidem nulla eius quod ipsa deserunt inventore obcaecati natus!
                 </p>
-                <button className="btn bg-yellow-700 text-white mt-6 px-6 py-2 rounded-lg">
+                <button className="btn bg-[#F06728] border-none text-white mt-6 px-6 py-2 rounded-lg">
                     Deliver
                 </button>
             </div>

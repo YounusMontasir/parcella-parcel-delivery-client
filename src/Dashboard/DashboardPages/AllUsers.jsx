@@ -69,26 +69,27 @@ const AllUsers = () => {
   };
 
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="w-11/12 lg:w-10/12 mx-auto">
       <h1 className="text-4xl text-center mt-16 mb-12">All Users</h1>
       <div>
-        <Table>
-          <TableHeader>
+       <div className="rounded-lg">
+       <Table className="overflow-hidden overflow-x-auto rounded-lg shadow-lg border border-gray-300">
+          <TableHeader className="bg-gradient-to-r from-orange-500 to-red-500 ">
             <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Role</TableHead>
-              <TableHead>Actions</TableHead>
-              <TableHead>Actions</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Name</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Email</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Role</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Make Admin</TableHead>
+              <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Make Deliveryman</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {users.map((user) => (
               <TableRow key={user._id}>
-                <TableCell className="font-medium">{user.name}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>{user.role}</TableCell>
-                <TableCell>
+                <TableCell className="font-medium p-4">{user.name}</TableCell>
+                <TableCell className="p-4  ">{user.email}</TableCell>
+                <TableCell className="p-4  ">{user.role}</TableCell>
+                <TableCell className="p-4  ">
                   {user?.role === "admin" ? (
                     "Admin"
                   ) : (
@@ -100,7 +101,7 @@ const AllUsers = () => {
                     </button>
                   )}
                 </TableCell>
-                <TableCell>
+                <TableCell className="p-4  ">
                   {user?.role === "deliveryman" ? (
                     "Delivery Man"
                   ) : (
@@ -116,6 +117,7 @@ const AllUsers = () => {
             ))}
           </TableBody>
         </Table>
+       </div>
       </div>
     <div className="mt-20  mx-auto">
     <Pagination>

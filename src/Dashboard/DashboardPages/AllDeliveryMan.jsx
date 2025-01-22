@@ -25,31 +25,31 @@ const AllDeliveryMan = () => {
    
 
     return (
-        <div className='w-10/12 mx-auto'>
+        <div className='w-11/12 lg:w-10/12 mx-auto'>
             <h2 className='mt-16 text-4xl mb-12 text-center'>All Delivery Men</h2>
-            
-               <Table>
-                           <TableHeader>
+            <div className="rounded-lg">
+            <Table className="overflow-hidden overflow-x-auto rounded-lg shadow-lg border border-gray-300">
+                           <TableHeader className="bg-gradient-to-r from-orange-500 to-red-500 ">
                              <TableRow>
-                               <TableHead className="">Delivery Man's Name</TableHead>
-                               <TableHead>Phone Number
-                               </TableHead>
-                               <TableHead>Number of parcels delivered</TableHead>
-                               <TableHead className="">Average review</TableHead>
+                               <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Delivery Man's Name</TableHead>
+                               <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Phone Number</TableHead>
+                               <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Number of parcels delivered</TableHead>
+                               <TableHead className="p-4 text-left border-r border-gray-300 text-white font-semibold">Average review</TableHead>
                              </TableRow>
-                           </TableHeader>
+                           </TableHeader >
                            <TableBody>
                              {deliveryMans.map((deliveryMan) => (
-                               <TableRow key={deliveryMan._id}>
-                                 <TableCell className="font-medium">{deliveryMan.name}</TableCell>
-                                 <TableCell>{deliveryMan.phone ? deliveryMan.phone : "N/A"}</TableCell>
-                                 <TableCell>{deliveryMan.parcelDelivered}</TableCell>
-                                 <TableCell>{deliveryMan.review}</TableCell>
+                               <TableRow key={deliveryMan._id} className="hover:bg-gray-50 transition duration-200 ">
+                                 <TableCell className="font-medium p-4">{deliveryMan.name}</TableCell>
+                                 <TableCell className="p-4  ">{deliveryMan.phone ? deliveryMan.phone : "N/A"}</TableCell>
+                                 <TableCell className="p-4  ">{deliveryMan.parcelDelivered}</TableCell>
+                                 <TableCell className="p-4  ">{deliveryMan.review}</TableCell>
                                  
                                </TableRow>
                              ))}
                            </TableBody>
                          </Table>
+            </div>
           
         </div>
     );
