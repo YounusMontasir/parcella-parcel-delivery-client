@@ -16,7 +16,7 @@ const AllDeliveryMan = () => {
     const { data: deliveryMans = [], isLoading, error } = useQuery({
         queryKey: ["deliveryman"],
         queryFn: async () => {
-            const res = await axiosSecure.get("/users");
+            const res = await axiosSecure.get("/users/deliverymans");
             
             return res.data.filter(user => user.role === 'deliveryman');
         },
@@ -27,7 +27,7 @@ const AllDeliveryMan = () => {
     return (
         <div className='w-10/12 mx-auto'>
             <h2 className='mt-16 text-4xl mb-12 text-center'>All Delivery Men</h2>
-            {deliveryMans.length > 0 ? (
+            
                <Table>
                            <TableHeader>
                              <TableRow>
@@ -44,14 +44,13 @@ const AllDeliveryMan = () => {
                                  <TableCell className="font-medium">{deliveryMan.name}</TableCell>
                                  <TableCell>{deliveryMan.phone ? deliveryMan.phone : "N/A"}</TableCell>
                                  <TableCell>{deliveryMan.parcelDelivered}</TableCell>
+                                 <TableCell>{deliveryMan.review}</TableCell>
                                  
                                </TableRow>
                              ))}
                            </TableBody>
                          </Table>
-            ) : (
-                <p>No delivery men found.</p>
-            )}
+          
         </div>
     );
 };

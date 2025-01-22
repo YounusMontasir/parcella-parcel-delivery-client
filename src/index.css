@@ -1,6 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.lexend-font {
+  font-family: "Lexend", serif;
+  
+}
+.active{
+  background-color: #F06728;
+  color: white;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

@@ -19,6 +19,7 @@ import {
 import { FaTruck, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import { Truck, User2, UserCircle } from "lucide-react";
 
 const AllUsers = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -93,9 +94,9 @@ const AllUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className="px-3 py-2 bg-blue-500 text-white rounded"
+                      className="px-1 py-1 bg-blue-500 text-white rounded"
                     >
-                      <FaUsers />
+                     <User2></User2>
                     </button>
                   )}
                 </TableCell>
@@ -105,9 +106,9 @@ const AllUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeDeliveryMan(user)}
-                      className="px-3 py-2 bg-orange-500 text-white rounded"
+                      className="px-2 py-1 bg-orange-500 text-white rounded"
                     >
-                      <FaTruck />
+                      <Truck></Truck>
                     </button>
                   )}
                 </TableCell>

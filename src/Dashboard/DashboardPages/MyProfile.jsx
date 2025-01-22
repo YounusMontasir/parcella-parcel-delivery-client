@@ -12,7 +12,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const MyProfile = () => {
     const axiosPublic = useAxiosPublic();
-    const { user } = useAuth();
+    const { user, updateUserProfile } = useAuth();
     const {
         register,
         handleSubmit,

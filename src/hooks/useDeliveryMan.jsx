@@ -13,6 +13,7 @@ const useDeliveryMan = () => {
             const res = await axiosSecure.get(`/users/deliveryman/${user.email}`);
             console.log(res.data);
             
+            
             return res.data?.deliveryMan;
         }
     })

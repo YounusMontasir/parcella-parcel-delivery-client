@@ -1,10 +1,14 @@
+import useAdmin from '@/hooks/useAdmin';
 import useAuth from '@/hooks/useAuth';
+import useDeliveryMan from '@/hooks/useDeliveryMan';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
   const {user, logoutUser} = useAuth()
+  // const [isAdmin] = useAdmin()
+  // const [isDeliveryMan] = useDeliveryMan()
   const handleLogout = () =>{
     logoutUser()
     .then(res=>{
@@ -65,7 +69,16 @@ const Navbar = () => {
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
         <li>{user?.displayName ? user.displayName : "Profile"}</li>
-        <Link to='/dashboard'><li>Dashboard</li></Link>
+        {/* {
+          isAdmin && <> <Link to='/dashboard/statistics'><li>Dashboard</li></Link></>
+        }
+        {
+          isDeliveryMan && <> <Link to='/dashboard/mydeliverylist'><li>Dashboard</li></Link></>
+        }
+        {
+          (!isAdmin && !isDeliveryMan) && <> <Link to='/dashboard/myprofile'><li>Dashboard</li></Link></>
+        } */}
+       <Link to='/dashboard'><li>Dashboard</li></Link>
         {
           user ? <li onClick={handleLogout}>Logout</li> : <Link to='/auth/login'><li>Login</li></Link>
         }
