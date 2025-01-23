@@ -5,8 +5,8 @@ import React from 'react';
 const TopDeliveryMan = () => {
     const {deliveryData}  = useUser()
     return (
-        <div className='w-10/12 mx-auto my-24'>
-            <div className='grid grid-cols-3 gap-6'>
+        <div className='w-11/12 lg:w-10/12 mx-auto my-24'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
             <Card>
                <CardHeader>
                 <img className='h-56 object-cover' src='https://i.ibb.co.com/YWrjRjt/delivery-man-3.png'></img>

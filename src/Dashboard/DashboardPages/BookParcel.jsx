@@ -78,7 +78,7 @@ const BookParcel = () => {
   }, [price, setValue])
 
   return (
-    <Card className="w-full max-w-4xl mx-auto mt-8 shadow-lg">
+    <Card className="w-full max-w-4xl mx-auto mt-12 mb-20 shadow-lg">
       <CardHeader className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
         <CardTitle className="text-3xl font-bold text-center">Book A Parcel</CardTitle>
       </CardHeader>

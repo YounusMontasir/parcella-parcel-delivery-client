@@ -2,8 +2,8 @@ import React from 'react';
 
 const Features = () => {
     return (
-        <div className='grid grid-cols-3 w-10/12 mx-auto my-24'>
-            <div className="card bg-base-100 w-96 shadow-xl">
+        <div className='grid grid-cols-1 lg:grid-cols-3 w-10/12 gap-12 mx-auto my-24'>
+            <div className="card bg-base-100 shadow-xl">
   <figure className="px-10 pt-10">
     <img
       src="https://i.ibb.co.com/FB00hHs/icons8-delivery-truck-96.png"
@@ -17,7 +17,7 @@ const Features = () => {
   </div>
 </div>            
 {/* card 2 */}
-<div className="card bg-base-100 w-96 shadow-xl">
+<div className="card bg-base-100  shadow-xl">
   <figure className="px-10 pt-10">
     <img
       src="https://i.ibb.co.com/jTPSxS6/icons8-time-100.png"
@@ -31,7 +31,7 @@ const Features = () => {
   </div>
 </div>            
 {/* card 3 */}
-<div className="card bg-base-100 w-96 shadow-xl">
+<div className="card bg-base-100  shadow-xl">
   <figure className="px-10 pt-10">
     <img
       src="https://i.ibb.co.com/0hr9ygG/icons8-secure-package-96.png"

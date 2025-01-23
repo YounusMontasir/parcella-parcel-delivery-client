@@ -6,6 +6,8 @@ import useAuth from "@/hooks/useAuth";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useLoaderData, useParams } from "react-router-dom";
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const UpdateBookingParcel = () => {
   const { user } = useAuth();
@@ -105,10 +107,12 @@ const UpdateBookingParcel = () => {
   }, [calculatedPrice, setValue]);
 
   return (
-    <div className="w-10/12 mx-auto mt-12">
-      <h1 className="text-4xl text-center mb-10">Update Parcel Booking</h1>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+   <Card className="w-full max-w-4xl mx-auto mt-8 shadow-lg">
+         <CardHeader className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
+           <CardTitle className="text-3xl font-bold text-center">Update A Parcel</CardTitle>
+         </CardHeader>
+         <CardContent className="p-6">
+         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-2 gap-6">
             {/* Name Input */}
             <div className="mb-4">
@@ -262,8 +266,8 @@ const UpdateBookingParcel = () => {
             value="Update Parcel"
           />
         </form>
-      </div>
-    </div>
+         </CardContent>
+       </Card>
   );
 };
 

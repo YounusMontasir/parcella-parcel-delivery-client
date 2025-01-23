@@ -13,6 +13,7 @@ import {
     TableRow,
   } from "@/components/ui/table";
 import { Link } from 'react-router-dom';
+import { X } from 'lucide-react';
 
 const MyDeliveryList = () => {
     const {deliveryData} = useUser()
@@ -140,7 +141,7 @@ const MyDeliveryList = () => {
                       deliveryList.bookingStatus === "delivered" ? "opacity-50 cursor-not-allowed" : ""
                     }`}
                   >
-                    {deliveryList.bookingStatus ==="cancelled" ? "Cancelled" : "Cancel"}
+                    {deliveryList.bookingStatus ==="cancelled" ? "Cancelled" : <X></X>}
                   </button>
                 </TableCell>
                 {/* give review */}

@@ -26,7 +26,7 @@ const AllDeliveryMan = () => {
 
     return (
         <div className='w-11/12 lg:w-10/12 mx-auto'>
-            <h2 className='mt-16 text-4xl mb-12 text-center'>All Delivery Men</h2>
+            <h1 className="text-4xl text-center text-[#25224B] mb-12 mt-8 font-bold">All Delivery <span className="text-[#F06728]">Man</span></h1>
             <div className="rounded-lg">
             <Table className="overflow-hidden overflow-x-auto rounded-lg shadow-lg border border-gray-300">
                            <TableHeader className="bg-gradient-to-r from-orange-500 to-red-500 ">
@@ -43,7 +43,7 @@ const AllDeliveryMan = () => {
                                  <TableCell className="font-medium p-4">{deliveryMan.name}</TableCell>
                                  <TableCell className="p-4  ">{deliveryMan.phone ? deliveryMan.phone : "N/A"}</TableCell>
                                  <TableCell className="p-4  ">{deliveryMan.parcelDelivered}</TableCell>
-                                 <TableCell className="p-4  ">{deliveryMan.review}</TableCell>
+                                 <TableCell className="p-4  ">{deliveryMan.averageReview ? deliveryMan.averageReview : "N/A"}</TableCell>
                                  
                                </TableRow>
                              ))}

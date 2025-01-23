@@ -70,7 +70,7 @@ const AllUsers = () => {
 
   return (
     <div className="w-11/12 lg:w-10/12 mx-auto">
-      <h1 className="text-4xl text-center mt-16 mb-12">All Users</h1>
+      <h1 className="text-4xl text-center text-[#25224B] mb-12 mt-8 font-bold">All <span className="text-[#F06728]">Users</span></h1>
       <div>
        <div className="rounded-lg">
        <Table className="overflow-hidden overflow-x-auto rounded-lg shadow-lg border border-gray-300">

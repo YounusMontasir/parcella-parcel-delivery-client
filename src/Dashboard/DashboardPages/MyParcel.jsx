@@ -19,7 +19,7 @@ const MyParcel = () => {
   const { user } = useAuth()
   const axiosSecure = useAxiosSecure()
   const axiosPublic = useAxiosPublic()
-  const { register, handleSubmit, control } = useForm()
+  const { register, handleSubmit, control, reset } = useForm()
   const [statusFilter, setStatusFilter] = useState("all")
 
   const formatDate = (date) => {
@@ -50,7 +50,9 @@ const MyParcel = () => {
         showConfirmButton: false,
         timer: 1500,
       })
+      reset()
     }
+    
   }
 
   const { data: myParcels = [], refetch } = useQuery({
@@ -91,7 +93,7 @@ const MyParcel = () => {
   }
 
   return (
-    <div className="w-11/12 lg:w-10/12  mx-auto">
+    <div className="w-11/12 lg:w-10/12 mb-20  mx-auto">
       <h1 className="text-4xl text-center text-[#25224B] mb-12 mt-8 font-bold">My <span className="text-[#F06728]">Parcels</span></h1>
       <div className="mb-10 w-[200px]">
         <Label htmlFor="statusFilter">Booking Status</Label>
@@ -151,7 +153,7 @@ const MyParcel = () => {
               </DialogTrigger>
               <DialogContent className="w-6/12">
                 <DialogHeader>
-                  <DialogTitle>Review</DialogTitle>
+                  <DialogTitle className=" text-2xl text-[#F06728] text-center ">Review</DialogTitle>
                 </DialogHeader>
                 <div>
                   <form className="grid grid-cols-2 gap-4" onSubmit={handleSubmit(onSubmit)}>
@@ -217,7 +219,7 @@ const MyParcel = () => {
                     </div>
                     <DialogFooter className="col-span-2">
                       <Input
-                        className="bg-blue-600 text-white cursor-pointer"
+                        className="bg-[#F06728] text-white cursor-pointer"
                         type="submit"
                         value="Submit Review"
                       />

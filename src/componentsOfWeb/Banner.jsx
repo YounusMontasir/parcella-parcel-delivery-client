@@ -1,6 +1,7 @@
 import React from 'react';
 import bannerLottie from './../assets/asset/bannerLottie.json'
 import Lottie from 'lottie-react';
+import bikeLottie from './../assets/asset/bike.json'
 
 const Banner = () => {
     const bannerStyle = {
@@ -11,10 +12,10 @@ const Banner = () => {
     };
 
     return (
-        <div className="h-[600px]  " style={bannerStyle}>
-            <div className='flex gap-16 pt-20 items-center w-10/12 mx-auto'>
-            <div className="text-white text-center pt-32 ">
-                <h2 className="text-4xl font-bold">Deliver the Happiness</h2>
+        <div className="lg:h-[600px]" style={bannerStyle}>
+            <div className='flex flex-col lg:flex-row  lg:pt-12 pt-32 w-10/12 mx-auto'>
+            <div className="text-white   ">
+                <h2 className="text-5xl text-[#F06728] lg:pt-40 font-bold">Deliver the Happiness</h2>
                 <p className="mt-4">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci itaque, maiores aspernatur cupiditate tempore, facere vero ducimus voluptatibus consequuntur culpa magnam quidem nulla eius quod ipsa deserunt inventore obcaecati natus!
                 </p>
@@ -22,8 +23,8 @@ const Banner = () => {
                     Deliver
                 </button>
             </div>
-            <div className='w-full'>
-              <Lottie animationData={bannerLottie}></Lottie>
+            <div className='w-full '>
+              <Lottie className='h-[500px]' animationData={bikeLottie}></Lottie>
             </div>
             </div>
         </div>
