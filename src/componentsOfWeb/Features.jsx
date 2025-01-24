@@ -2,7 +2,9 @@ import React from 'react';
 
 const Features = () => {
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-3 w-10/12 gap-12 mx-auto my-24'>
+       <div>
+         <h1 className="text-4xl lg:text-5xl text-center text-[#25224B] mt-16 font-bold">What Sets <span className="text-[#F06728]">Us Apart</span></h1>
+         <div className='grid grid-cols-1 lg:grid-cols-3 w-10/12 gap-12 mx-auto my-24'>
             <div className="card bg-base-100 shadow-xl">
   <figure className="px-10 pt-10">
     <img
@@ -12,7 +14,7 @@ const Features = () => {
   </figure>
   <div className="card-body items-center text-center">
     <h2 className="card-title">Fast and Reliable Delivery</h2>
-    <p>Enjoy speedy and dependable delivery services that ensure your packages arrive on time, every time.</p>
+    <p className='text-gray-600'>Enjoy speedy and dependable delivery services that ensure your packages arrive on time, every time.</p>
     
   </div>
 </div>            
@@ -26,7 +28,7 @@ const Features = () => {
   </figure>
   <div className="card-body items-center text-center">
     <h2 className="card-title">Real-Time Tracking</h2>
-    <p>Stay updated with live tracking of your orders, so you always know where your package is.</p>
+    <p className='text-gray-600'>Stay updated with live tracking of your orders, so you always know where your package is.</p>
     
   </div>
 </div>            
@@ -40,11 +42,12 @@ const Features = () => {
   </figure>
   <div className="card-body items-center text-center">
     <h2 className="card-title">Secure Packaging</h2>
-    <p>Your items are handled with care and packaged securely to ensure they arrive in perfect condition.</p>
+    <p className='text-gray-600'>Your items are handled with care and packaged securely to ensure they arrive in perfect condition.</p>
     
   </div>
 </div>            
         </div>
+       </div>
     );
 };
 

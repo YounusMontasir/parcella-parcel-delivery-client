@@ -2,6 +2,7 @@ import React from 'react';
 import bannerLottie from './../assets/asset/bannerLottie.json'
 import Lottie from 'lottie-react';
 import bikeLottie from './../assets/asset/bike.json'
+import { Button } from '@/components/ui/button';
 
 const Banner = () => {
     const bannerStyle = {
@@ -17,11 +18,20 @@ const Banner = () => {
             <div className="text-white   ">
                 <h2 className="text-5xl text-[#F06728] lg:pt-40 font-bold">Deliver the Happiness</h2>
                 <p className="mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci itaque, maiores aspernatur cupiditate tempore, facere vero ducimus voluptatibus consequuntur culpa magnam quidem nulla eius quod ipsa deserunt inventore obcaecati natus!
+                ParCella is a reliable platform for easy parcel booking and delivery. Fast, secure, and convenient – we ensure your parcels reach their destination hassle-free!
                 </p>
-                <button className="btn bg-[#F06728] border-none text-white mt-6 px-6 py-2 rounded-lg">
-                    Deliver
-                </button>
+                 <div className="relative w-full lg:w-8/12 mt-5">
+                  <input
+                    type="text"
+                    placeholder="Enter your text"
+                    className="w-full p-[10px] pr-20 border rounded-md" // Added right padding for the button
+                  />
+                  <Button
+                    className="absolute right-1 top-1 bottom-1 px-4 bg-[#F06728] text-white rounded-md" // Adjusted position for proper alignment
+                  >
+                   Search
+                  </Button>
+                </div>
             </div>
             <div className='w-full '>
               <Lottie className='h-[500px]' animationData={bikeLottie}></Lottie>

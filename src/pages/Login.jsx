@@ -39,46 +39,77 @@ const Login = () => {
     }
          
     return (
-        <div className='flex w-10/12 mx-auto'>
-            <div>
-                <img src="https://i.ibb.co.com/Wy6hGm4/Login-amico.png" alt="" />
-            </div>
-            <div className="w-full">
-            <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-4">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    {...register("email", { required: true })}
-                    placeholder="Email"
-                  />
-                  {errors.email && (
-                    <span className="text-red-500">Email is required</span>
-                  )}
-                </div>
-      <div className="mb-4">
-                 <Label htmlFor="password">Password</Label>
-                 <Input
-                   id="password"
-                   type="password"
-                   {...register("password", { required: true })}
-                   placeholder="Enter your Password"
-                 />
-                 {errors.password && (
-                   <span className="text-red-500">Password is required</span>
-                 )}
-               </div>
-
-      {errors.password && <span>This field is required</span>}
-
-      <Input className="bg-blue-600 text-white" type="submit" />
-    </form>
-    <p>Doesn't have an Account? <Link to='/auth/register' className='text-blue-700 underline'>Signup</Link></p>
-    <Separator></Separator>
-    <SocialLogin></SocialLogin>
-            </div>
-        </div>
+     <div>
+       <h1 className="text-3xl lg:text-4xl text-center text-[#25224B]  mt-8 font-bold">
+      Sign in to <span className="text-[#F06728]">ParCella</span>
+    </h1>
+       <div className="flex flex-col lg:flex-row w-10/12 mx-auto p-6 lg:p-10 gap-8">
+      {/* Image Section */}
+      <div className="lg:w-1/2 flex justify-center items-center">
+        <img
+          className="max-w-full h-auto"
+          src="https://i.ibb.co/Wy6hGm4/Login-amico.png"
+          alt="Login Illustration"
+        />
+      </div>
+    
+      {/* Form Section */}
+      <div className="lg:w-1/2 bg-white shadow-lg rounded-lg p-6 lg:p-10">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {/* Email Input */}
+          <div>
+            <Label htmlFor="email" className="text-gray-700 font-medium">
+              Email
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              className="w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              {...register("email", { required: true })}
+              placeholder="Enter your Email"
+            />
+            {errors.email && (
+              <span className="text-sm text-red-500">Email is required</span>
+            )}
+          </div>
+    
+          {/* Password Input */}
+          <div>
+            <Label htmlFor="password" className="text-gray-700 font-medium">
+              Password
+            </Label>
+            <Input
+              id="password"
+              type="password"
+              className="w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              {...register("password", { required: true })}
+              placeholder="Enter your Password"
+            />
+            {errors.password && (
+              <span className="text-sm text-red-500">Password is required</span>
+            )}
+          </div>
+    
+          {/* Submit Button */}
+          <Input
+            className="w-full bg-[#F06728] text-white font-bold rounded-lg py-2 cursor-pointer hover:bg-[#25224B]"
+            type="submit"
+            value="Log In"
+          />
+        </form>
+    
+        <p className="mt-4 text-center text-gray-700">
+          Don't have an Account?{" "}
+          <Link to="/auth/register" className="text-blue-700 underline">
+            Sign up
+          </Link>
+        </p>
+        <Separator orientation="horizontal" className="my-10 bg-gray-400"></Separator>
+        <SocialLogin></SocialLogin>
+      </div>
+    </div>
+     </div>
+    
     );
 };
 

@@ -28,7 +28,7 @@ const Dashboard = () => {
   return (
     <SidebarProvider className="bg-[#F06728]">
       <Sidebar className="w-64 ">
-        <SidebarHeader>Welcome, {user.displayName}</SidebarHeader>
+        <SidebarHeader className='text-xl'>Welcome to ParCella</SidebarHeader>
         <Separator orientation="horizontal" className="h-[1px] mt-6 w-10/12 mx-auto" />
         <SidebarContent>
           <SidebarGroup className="space-y-2 mt-6">

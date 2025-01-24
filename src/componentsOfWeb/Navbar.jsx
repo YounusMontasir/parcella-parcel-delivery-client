@@ -6,7 +6,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import logo from './../assets/asset/parcella-high-resolution-logo.png'
-import logo2 from './../assets/asset/ParCella_logo-removebg-preview.png'
+import logo2 from './../assets/asset/logo33.png'
 
 const Navbar = () => {
   const {user, logoutUser} = useAuth()
@@ -26,13 +26,14 @@ const Navbar = () => {
   }
     return (
         <div>
-            <div className="navbar bg-base-100 w-10/12 mx-auto">
+            <div className="navbar bg-base-100 w-11/12 lg:w-10/12 mx-auto">
   <div className="flex-1">
-    <img src={logo2} className='h-16 w-32' alt="" />
+    <img src={logo2} className='h-12 w-16 lg:h-16 lg:w-20' alt="" />
+    <Link to='/' className='text-2xl lg:text-3xl text-[#F06728] font-bold'>Par<span className='text-[#25224B]'>Cella</span></Link>
     
   </div>
-  <div className="flex gap-6">
-   <Link className='text-[#F06728]'>Home</Link>
+  <div className="flex gap-1">
+   <Link to='/' className='text-[#F06728]'>Home</Link>
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
         <div className="indicator">
           <BellRing></BellRing>

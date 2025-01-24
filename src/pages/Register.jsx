@@ -44,7 +44,7 @@ const Register = () => {
       if(res.data.success){
         const parcelDelivered = 0;
         const parcelBooked = 0;
-        const averageReview = 0
+        const averageReview =parseFloat(0)
         const userInfo = {
           name: data.name,
           phone: data.phone,
@@ -84,93 +84,125 @@ const Register = () => {
   
 
   return (
-    <div className="flex w-10/12 mx-auto">
-      <div>
+    <div>
+    <h1 className="text-3xl lg:text-4xl text-center text-[#25224B]  mt-8 font-bold">
+      Sign up to <span className="text-[#F06728]">ParCella</span>
+    </h1>
+    <div className="flex flex-col lg:flex-row w-11/12 lg:w-10/12 mx-auto p-6 lg:p-10">
+      {/* Image Section */}
+      <div className="lg:w-1/2 flex justify-center items-center">
         <img
+          className="h-auto"
           src="https://i.ibb.co/Dk1CvPm/Sign-up-rafiki-1.png"
           alt="Sign Up Illustration"
         />
       </div>
-      <div className="w-full">
-        <form onSubmit={handleSubmit(onSubmit)}>
+  
+      {/* Form Section */}
+      <div className="lg:w-1/2 bg-white shadow-lg rounded-lg p-6 lg:p-10">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Name Input */}
-          <div className="mb-4">
-            <Label htmlFor="name">Name</Label>
+          <div>
+            <Label htmlFor="name" className="text-gray-700 font-medium">
+              Name
+            </Label>
             <Input
               id="name"
               type="text"
+              className="w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               {...register("name", { required: true })}
               placeholder="Enter your Name"
             />
             {errors.name && (
-              <span className="text-red-500">Name is required</span>
+              <span className="text-sm text-red-500">Name is required</span>
             )}
           </div>
-
+  
           {/* Phone Input */}
-          <div className="mb-4">
-            <Label htmlFor="phone">Phone Number</Label>
+          <div>
+            <Label htmlFor="phone" className="text-gray-700 font-medium">
+              Phone Number
+            </Label>
             <Input
               id="phone"
               type="text"
+              className="w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               {...register("phone", { required: true })}
               placeholder="Enter Your Phone Number"
             />
             {errors.phone && (
-              <span className="text-red-500">Phone number is required</span>
+              <span className="text-sm text-red-500">
+                Phone number is required
+              </span>
             )}
           </div>
-
+  
           {/* Email Input */}
-          <div className="mb-4">
-            <Label htmlFor="email">Email</Label>
+          <div>
+            <Label htmlFor="email" className="text-gray-700 font-medium">
+              Email
+            </Label>
             <Input
               id="email"
               type="email"
+              className="w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               {...register("email", { required: true })}
               placeholder="Email"
             />
             {errors.email && (
-              <span className="text-red-500">Email is required</span>
+              <span className="text-sm text-red-500">Email is required</span>
             )}
           </div>
-
+  
           {/* Date Input */}
-          <div className="mb-4">
-            <Label htmlFor="date">Date</Label>
+          <div>
+            <Label htmlFor="date" className="text-gray-700 font-medium">
+              Date
+            </Label>
             <Input
               id="date"
               type="date"
+              className="w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               {...register("date", { required: true })}
             />
             {errors.date && (
-              <span className="text-red-500">Date is required</span>
+              <span className="text-sm text-red-500">Date is required</span>
             )}
           </div>
-
+  
           {/* Password Input */}
-          <div className="mb-4">
-            <Label htmlFor="password">Password</Label>
+          <div>
+            <Label htmlFor="password" className="text-gray-700 font-medium">
+              Password
+            </Label>
             <Input
               id="password"
               type="password"
+              className="w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               {...register("password", { required: true })}
               placeholder="Enter your Password"
             />
             {errors.password && (
-              <span className="text-red-500">Password is required</span>
+              <span className="text-sm text-red-500">
+                Password is required
+              </span>
             )}
           </div>
-
+  
           {/* Role Select */}
-          <div className="mb-4">
-            <Label htmlFor="role">Role</Label>
+          <div>
+            <Label htmlFor="role" className="text-gray-700 font-medium">
+              Role
+            </Label>
             <Controller
               name="role"
               control={control}
               rules={{ required: true }}
               render={({ field }) => (
-                <Select onValueChange={field.onChange}>
+                <Select
+                  className="w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  onValueChange={field.onChange}
+                >
                   <SelectTrigger id="role">
                     <SelectValue placeholder="Select Role" />
                   </SelectTrigger>
@@ -182,34 +214,48 @@ const Register = () => {
               )}
             />
             {errors.role && (
-              <span className="text-red-500">Role is required</span>
+              <span className="text-sm text-red-500">Role is required</span>
             )}
           </div>
-
+  
           {/* File Input */}
-          <div className="mb-4">
-            <Label htmlFor="file">Upload File</Label>
+          <div>
+            <Label htmlFor="file" className="text-gray-700 font-medium">
+              Upload File
+            </Label>
             <Input
               id="file"
               type="file"
+              className="w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               {...register("image", { required: true })}
             />
             {errors.file && (
-              <span className="text-red-500">File upload is required</span>
+              <span className="text-sm text-red-500">
+                File upload is required
+              </span>
             )}
           </div>
-
+  
           {/* Submit Button */}
           <Input
-            className="bg-blue-600 text-white cursor-pointer"
+            className="w-full bg-[#F06728] text-white font-bold rounded-lg py-2 cursor-pointer hover:bg-[#25224B]"
             type="submit"
+            value="Sign Up"
           />
         </form>
-        <p>Already have an Account? <Link to='/auth/login' className='text-blue-700 underline'>Signin</Link></p>
-        <Separator orientation = "horizontal" className="my-10 bg-gray-400"></Separator>
+  
+        <p className="mt-4 text-center text-gray-700">
+          Already have an Account?{" "}
+          <Link to="/auth/login" className="text-blue-700 underline">
+            Sign in
+          </Link>
+        </p>
+        <Separator orientation="horizontal" className="my-10 bg-gray-400"></Separator>
         <SocialLogin></SocialLogin>
       </div>
     </div>
+  </div>
+  
   );
 };
 

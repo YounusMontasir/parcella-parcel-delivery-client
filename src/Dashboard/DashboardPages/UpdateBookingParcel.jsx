@@ -261,7 +261,7 @@ const UpdateBookingParcel = () => {
 
           {/* Submit Button */}
           <Input
-            className="bg-blue-600 text-white cursor-pointer"
+            className="bg-[#F06728] text-white cursor-pointer"
             type="submit"
             value="Update Parcel"
           />

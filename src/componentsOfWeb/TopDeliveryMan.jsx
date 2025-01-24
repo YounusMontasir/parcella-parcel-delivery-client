@@ -1,50 +1,61 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import useUser from '@/hooks/useUser';
-import React from 'react';
-
-const TopDeliveryMan = () => {
-    const {deliveryData}  = useUser()
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+  } from "@/components/ui/card";
+  import useAxiosPublic from "@/hooks/useAxiosPublic";
+  import { useQuery } from "@tanstack/react-query";
+  import React from "react";
+  
+  const TopDeliveryMan = () => {
+    const axiosPublic = useAxiosPublic();
+  
+    const { data: deliveryMans = [], isLoading, error } = useQuery({
+      queryKey: ["deliveryman"],
+      queryFn: async () => {
+        const res = await axiosPublic.get("/users/deliverymans");
+        return res.data.filter((user) => user.role === "deliveryman");
+      },
+    });
+  
+   
+    const topDeliveryMan = deliveryMans
+      .sort((a, b) => b.averageReview - a.averageReview)
+      .slice(0, 3);
+  
+    if (isLoading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+  
     return (
-        <div className='w-11/12 lg:w-10/12 mx-auto my-24'>
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
-            <Card>
-               <CardHeader>
-                <img className='h-56 object-cover' src='https://i.ibb.co.com/YWrjRjt/delivery-man-3.png'></img>
-               </CardHeader>
-               <CardContent className="space-y-2">
-               <CardTitle>Alex Johnson</CardTitle>
-               <CardDescription>A highly dedicated delivery man known for his punctuality and customer-friendly attitude.</CardDescription>
-               <p>300</p>
-               </CardContent>
-            </Card>
-            {/* card 2 */}
-            <Card>
-               <CardHeader>
-                <img className='h-56 object-cover' src='https://i.ibb.co.com/phdWjgz/delivery-man-2.png'></img>
-               </CardHeader>
-               <CardContent className="space-y-2">
-               <CardTitle>Michael Lee</CardTitle>
-               <CardDescription>Famous for his efficiency and knack for handling high-pressure delivery schedules.</CardDescription>
-               <p>300</p>
-               </CardContent>
-            </Card>
-            {/* card 3 */}
-            <Card>
-               <CardHeader>
-                <img className='h-56 object-cover' src='https://i.ibb.co.com/M2tHRvG/delivery-man-1.png'></img>
-               </CardHeader>
-               <CardContent className="space-y-2">
-               <CardTitle>David Williams</CardTitle>
-               <CardDescription>Known for his reliability and maintaining a positive relationship with customers.</CardDescription>
-               <p>300</p>
-               </CardContent>
-            </Card>
+      <div className="w-11/12 lg:w-10/12 mx-auto my-24">
+         <h1 className="text-4xl lg:text-5xl text-center text-[#25224B] mb-16 mt-8 font-bold">Top Delivery <span className="text-[#F06728]">Man</span></h1>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {topDeliveryMan.map((delivery) => (
+            <div key={delivery._id}>
+              <Card>
+                <CardHeader>
+                  <img
+                    className="h-56 w-full object-cover"
+                    src={delivery.image || "https://via.placeholder.com/150"}
+                    alt={delivery.name || "Delivery Man"}
+                  />
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <CardTitle>{delivery.name}</CardTitle>
+                  <CardDescription>
+                    Parcels Delivered: {delivery.parcelDelivered || 0}
+                  </CardDescription>
+                  <p>Average Review: {delivery.averageReview || "N/A"}</p>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
         </div>
-        </div>
+      </div>
     );
-};
-
-export default TopDeliveryMan;
-// https://i.ibb.co.com/YWrjRjt/delivery-man-3.png
-// https://i.ibb.co.com/M2tHRvG/delivery-man-1.png
-// https://i.ibb.co.com/phdWjgz/delivery-man-2.png
+  };
+  
+  export default TopDeliveryMan;
+  
