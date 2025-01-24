@@ -40,7 +40,7 @@ const MyParcel = () => {
       reviewDate: formatDate(date),
     }
     const res = await axiosPublic.post("/reviews", reviewInfo)
-    console.log(res.data)
+    // console.log(res.data)
 
     if (res.data.insertedId) {
       Swal.fire({

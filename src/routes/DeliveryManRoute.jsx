@@ -7,7 +7,7 @@ const DeliveryManRoute = ({children}) => {
     const {user, loading} = useAuth()
     const [isDeliveryMan, isDeliveryManLoading]= useDeliveryMan()
     const location = useLocation()
-    console.log({loading}, {isDeliveryManLoading});
+    // console.log({loading}, {isDeliveryManLoading});
     
        if(loading || isDeliveryManLoading){
         return <p>Loading...</p>

@@ -10,7 +10,7 @@ const MyReviews = () => {
     queryKey: ["reviews", deliveryData?._id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/reviews/${deliveryData._id}`);
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     },
   });

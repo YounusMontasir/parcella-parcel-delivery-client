@@ -21,7 +21,7 @@ const SocialLogin = () => {
     const handleGoogleLogin = () => {
         loginWithGoogle()
             .then(res => {
-                console.log(res.data);
+                
                 
                 const date = new Date();
                 const parcelDelivered = 0;
@@ -39,7 +39,7 @@ const SocialLogin = () => {
                 };
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
-                        console.log(res.data);
+                       
                         navigate(location?.state ? location.state : "/");
                     })
                     .catch(err => {

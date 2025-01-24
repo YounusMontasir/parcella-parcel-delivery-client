@@ -28,7 +28,7 @@ const BookParcel = () => {
   }
 
   const onSubmit = async (data) => {
-    console.log(data)
+    // console.log(data)
 
     const date = new Date()
     const deliveryInfo = {
@@ -48,7 +48,7 @@ const BookParcel = () => {
       bookingDate: formatDate(date),
     }
     const res = await axiosPublic.post("/parcels", deliveryInfo)
-    console.log(res.data)
+    // console.log(res.data)
     if (res.data.insertedId) {
       reset()
       Swal.fire({

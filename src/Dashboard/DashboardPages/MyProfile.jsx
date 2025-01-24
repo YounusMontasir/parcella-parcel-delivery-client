@@ -64,7 +64,7 @@ const MyProfile = () => {
     }
 
     return (
-        <div className="w-5/12 mx-auto p-6 bg-white rounded-lg shadow-lg mt-20">
+        <div className="w-11/12 lg:w-5/12 mx-auto p-6 bg-white rounded-lg shadow-lg mt-20">
            <h1 className="text-4xl text-center text-[#25224B] mb-12 mt-8 font-bold">My <span className="text-[#F06728]">Profile</span></h1>
 
             <div className="flex flex-col items-center mb-6">

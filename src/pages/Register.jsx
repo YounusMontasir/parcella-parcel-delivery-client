@@ -32,7 +32,7 @@ const Register = () => {
   } = useForm();
 
   const onSubmit =async (data) => {
-    console.log(data);
+    // console.log(data);
       // send to imgbb imagebb
       const imageFile = {image: data.image[0]}
       const res  = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -61,7 +61,7 @@ const Register = () => {
     .then((result) => {
       const loggedUser = result.user;
       setUser(loggedUser)
-       console.log(loggedUser);
+      //  console.log(loggedUser);
        updateUserProfile(data.name, res.data.data.display_url)
        Swal.fire({
                          position: "center",

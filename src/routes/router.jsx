@@ -71,7 +71,7 @@ const router = createBrowserRouter([
         {
           path: '/dashboard/updatebooking/:id',
           element: <UpdateBookingParcel></UpdateBookingParcel>,
-          loader: ({params})=> fetch(`http://localhost:5000/parcels/update/${params.id}`)
+          loader: ({params})=> fetch(`https://parcella-parcel-delivery-server.vercel.app/parcels/update/${params.id}`)
         },
         // admin routes
         {
@@ -114,7 +114,7 @@ const router = createBrowserRouter([
         {
           path: '/dashboard/payment/:id',
           element: <Payment></Payment>,
-          loader: ({params})=> fetch(`http://localhost:5000/parcels/payment/${params.id}`)
+          loader: ({params})=> fetch(`https://parcella-parcel-delivery-server.vercel.app/parcels/payment/${params.id}`)
         },
         
       ]

@@ -19,12 +19,12 @@ const Login = () => {
       } = useForm()
     
       const onSubmit = (data) =>{
-        console.log(data)
+        // console.log(data)
 
         loginUser(data.email, data.password)
         .then(res=>{
           navigate(location?.state ? location.state : "/");
-          console.log(res.user);
+          // console.log(res.user);
           Swal.fire({
                   position: "center",
                   icon: "success",
