@@ -25,8 +25,8 @@ const Navbar = () => {
     })
   }
     return (
-        <div>
-            <div className="navbar bg-base-100 w-11/12 lg:w-10/12 mx-auto">
+        <div className='sticky top-0 bg-base-100 z-10'>
+            <div className="navbar  w-11/12 lg:w-10/12 mx-auto ">
   <div className="flex-1">
     <img src={logo2} className='h-12 w-16 lg:h-16 lg:w-20' alt="" />
     <Link to='/' className='text-2xl lg:text-3xl text-[#F06728] font-bold'>Par<span className='text-[#25224B]'>Cella</span></Link>

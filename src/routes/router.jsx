@@ -23,6 +23,7 @@ import MyDeliveryList from "@/Dashboard/DashboardPages/MyDeliveryList";
 import MyReviews from "@/Dashboard/DashboardPages/MyReviews";
 import Payment from "@/Dashboard/DashboardPages/Payment";
 import Confetti from "@/Dashboard/DashboardPages/Confetti";
+import ErrorPage from "@/pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -123,6 +124,10 @@ const router = createBrowserRouter([
       path: '/confetti',
       element: <Confetti></Confetti>,
       
+    },
+    {
+      path: "*",
+      element: <ErrorPage></ErrorPage>
     }
   ]);
 
