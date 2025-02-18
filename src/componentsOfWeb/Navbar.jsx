@@ -36,7 +36,7 @@ const Navbar = () => {
    <Link to='/' className='text-[#F06728] font-bold'>Home</Link>
    <Link to='/aboutus' className='text-[#F06728] font-bold'>About Us</Link>
    <Link to='/contact' className='text-[#F06728] font-bold'>Contact</Link>
-     
+  
 
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
