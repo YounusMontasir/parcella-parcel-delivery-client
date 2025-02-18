@@ -32,13 +32,10 @@ const Navbar = () => {
     <Link to='/' className='text-2xl lg:text-3xl text-[#F06728] font-bold'>Par<span className='text-[#25224B]'>Cella</span></Link>
     
   </div>
-  <div className="flex gap-1">
-   <Link to='/' className='text-[#F06728]'>Home</Link>
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-        <div className="indicator">
-          <BellRing></BellRing>
-        </div>
-      </div>
+  <div className="flex gap-4">
+   <Link to='/' className='text-[#F06728] font-bold'>Home</Link>
+   <Link to='/aboutus' className='text-[#F06728] font-bold'>About Us</Link>
+   <Link to='/' className='text-[#F06728] font-bold'>Contact</Link>
      
 
     <div className="dropdown dropdown-end">

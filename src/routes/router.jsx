@@ -24,6 +24,7 @@ import MyReviews from "@/Dashboard/DashboardPages/MyReviews";
 import Payment from "@/Dashboard/DashboardPages/Payment";
 import Confetti from "@/Dashboard/DashboardPages/Confetti";
 import ErrorPage from "@/pages/ErrorPage";
+import AboutUs from "@/pages/AboutUs";
 
 const router = createBrowserRouter([
     {
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
         {
             path: "/",
             element: <Home></Home>,
-        }
+        },
+        {
+          path: "/aboutus",
+          element: <AboutUs></AboutUs>,
+      }
       ]
     },
     {
