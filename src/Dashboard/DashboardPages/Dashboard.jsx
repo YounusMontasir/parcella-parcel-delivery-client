@@ -106,7 +106,10 @@ const Dashboard = () => {
                 >
                    <div className="flex items-center gap-2"><Package></Package>My Parcel </div>
                 </NavLink>
-                <NavLink
+                
+              </>
+            )}
+            <NavLink
                   to="/dashboard/myprofile"
                   className={({ isActive }) =>
                     `w-full text-left px-4 py-2 rounded-lg ${isActive ? activeClassName : inactiveClassName}`
@@ -114,8 +117,6 @@ const Dashboard = () => {
                 >
                   <div className="flex items-center gap-2"><User></User> My Profile </div>
                 </NavLink>
-              </>
-            )}
           </SidebarGroup>
           <Separator orientation="horizontal" className="bg-gray-400 my-6 mx-auto h-[1px] w-10/12" />
           <SidebarGroup>

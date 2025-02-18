@@ -3,6 +3,7 @@ import Banner from '../componentsOfWeb/Banner';
 import Features from '../componentsOfWeb/Features';
 import Stats from '../componentsOfWeb/Stats';
 import TopDeliveryMan from '@/componentsOfWeb/TopDeliveryMan';
+import FAQ from '@/componentsOfWeb/FAQ';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <Features></Features>
             <Stats></Stats>
             <TopDeliveryMan></TopDeliveryMan>
+            <FAQ></FAQ>
         </div>
     );
 };
