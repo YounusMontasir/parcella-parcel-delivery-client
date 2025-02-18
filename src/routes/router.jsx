@@ -26,6 +26,8 @@ import Confetti from "@/Dashboard/DashboardPages/Confetti";
 import ErrorPage from "@/pages/ErrorPage";
 import AboutUs from "@/pages/AboutUs";
 
+import Contact from './../pages/Contact';
+
 const router = createBrowserRouter([
     {
       path: "/",
@@ -38,7 +40,11 @@ const router = createBrowserRouter([
         {
           path: "/aboutus",
           element: <AboutUs></AboutUs>,
-      }
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+    }
       ]
     },
     {
