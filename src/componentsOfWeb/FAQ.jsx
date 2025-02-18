@@ -10,31 +10,31 @@ const FAQ = () => {
              <div className='w-full space-y-4'>
              <div class="collapse collapse-arrow bg-base-200  ">
    <input type="radio" name="my-accordion-2" checked="checked" />
-   <div class="collapse-title text-xl  font-semibold">How does Suggestify work?</div>
+   <div class="collapse-title text-xl  font-semibold">How do I book a parcel for delivery?</div>
    <div class="collapse-content">
-     <p className='text-[#6C727C]'>Suggestify allows users to post queries about any product they are looking for. Other users can then recommend suitable products based on their experience or knowledge. This helps users make informed purchasing decisions.</p>
+     <p className='text-[#6C727C]'>To book a parcel, log in to your account and navigate to the "Parcel Booking" section. Fill in the necessary details, such as sender and recipient information, parcel size, and delivery date. Once submitted, you can make an online payment via Stripe and track your parcel from the dashboard.</p>
    </div>
  </div>
  <div class="collapse collapse-arrow bg-base-200">
    <input type="radio" name="my-accordion-2" />
-   <div class="collapse-title text-xl  font-semibold">Do I need an account to ask or recommend products?</div>
+   <div class="collapse-title text-xl  font-semibold">How can I check the status of my parcel?</div>
    <div class="collapse-content">
-     <p className='text-[#6C727C]'>Yes, you need to create an account and log in to ask queries or recommend products. This ensures a secure and interactive experience while maintaining the credibility of recommendations.</p>
+     <p className='text-[#6C727C]'>You can view all your booked parcels in the "Parcel List" section. Each parcel will have a status update such as Pending, In Transit, or Delivered. You can also see which deliveryman is handling your parcel.</p>
    </div>
  </div>
  <div class="collapse collapse-arrow bg-base-200">
    <input type="radio" name="my-accordion-2" />
-   <div class="collapse-title text-xl  font-semibold">Can I edit or delete my queries and recommendations?</div>
+   <div class="collapse-title text-xl  font-semibold">Can I update my profile details?</div>
    <div class="collapse-content">
-     <p className='text-[#6C727C]'>Yes, you can edit or delete your queries and recommendations anytime from your profile dashboard. This gives you full control over your contributions.
+     <p className='text-[#6C727C]'>Yes! Go to the "Profile" section to update your personal details such as name, contact information, and address. Keeping your profile updated ensures smooth communication and delivery.
      </p>
    </div>
  </div>
  <div class="collapse collapse-arrow bg-base-200">
    <input type="radio" name="my-accordion-2" />
-   <div class="collapse-title text-xl  font-semibold">How can I find product recommendations for my query?</div>
+   <div class="collapse-title text-xl  font-semibold">What payment options are available for parcel bookings?</div>
    <div class="collapse-content">
-     <p className='text-[#6C727C]'>Once you post a query, other users can respond with recommendations. You can check the responses under your query and see the suggested products along with user comments.</p>
+     <p className='text-[#6C727C]'>ParCella supports online payments through Stripe, allowing you to pay using debit or credit cards. This ensures a secure and seamless transaction for your parcel deliveries.</p>
    </div>
  </div>
              </div>
