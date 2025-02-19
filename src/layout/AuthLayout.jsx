@@ -1,12 +1,13 @@
 import Footer from '@/componentsOfWeb/Footer';
-import Navbar from '@/componentsOfWeb/Navbar';
+import Navbarr from '@/componentsOfWeb/Navbarr';
+
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 const AuthLayout = () => {
     return (
         <div>
-            <Navbar></Navbar>
+            <Navbarr></Navbarr>
             <div className='min-h-screen'>
                 <Outlet></Outlet>
             </div>
