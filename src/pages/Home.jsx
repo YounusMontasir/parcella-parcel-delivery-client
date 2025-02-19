@@ -6,6 +6,7 @@ import TopDeliveryMan from '@/componentsOfWeb/TopDeliveryMan';
 import FAQ from '@/componentsOfWeb/FAQ';
 import Brands from '@/componentsOfWeb/Brands';
 import ParcelBooking from '@/componentsOfWeb/ParcelBooking';
+import Review from '@/componentsOfWeb/Review';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <TopDeliveryMan></TopDeliveryMan>
             <FAQ></FAQ>
             <Brands></Brands>
+            <Review></Review>
         </div>
     );
 };
